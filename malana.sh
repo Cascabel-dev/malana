@@ -1,4 +1,9 @@
 #/bin/bash
+
+#Basic Dependency resolution
+sudo zypper in -y dialog curl wget
+
+#Main Menu
 MAINMENU=$(dialog --stdout --title "Malana" --menu "Select entries by pressing Enter." 15 50 9  \
 "1" "Disable UUID Counting" \
 "2" "Zypper Configuration" \
