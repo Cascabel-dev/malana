@@ -279,7 +279,7 @@ case $MAINMENU in
 		if [ $MULTIMEDIA -eq 0 ]; then
 			sudo zypper ar -cfp 90 https://ftp.fau.de/packman/suse/openSUSE_Tumbleweed/Essentials packman-essentials
 			sudo zypper refresh
-			sudo zypper dup --from packman --allow-vendor-change
+			sudo zypper dup -y --from packman-essentials --allow-vendor-change
 			sudo zypper in -y libdvdcss2 ffmpeg lame gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-good-extra gstreamer-plugins-bad gstreamer-plugins-bad-orig-addon gstreamer-plugins-ugly gstreamer-plugins-ugly-orig-addon gstreamer-plugins-libav dvdauthor07
 		else
 		  break
@@ -291,7 +291,7 @@ case $MAINMENU in
 		dialog --title "Malana" --colors --yes-label "Install" --no-label "Menu" --yesno "Install fonts?\n\nThis will install Microsoft and TrueType fonts." 10 50
 		FONTS=$?
 		if [ $FONTS -eq 0 ]; then
-			sudo zypper in -y fetchmsttfonts lato-fonts fetchvistafonts
+			sudo zypper in -y fetchmsttfonts lato-fonts
 		else
 		  break
 		fi
