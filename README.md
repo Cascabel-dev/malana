@@ -3,6 +3,16 @@ Post-installation script for openSUSE.  It offers options for software, font, an
 
 See: [Compatibility](docs/compatibility.md)
 
+# Running / Usage
+To install Malana, run the following commands:
+```
+sudo zypper in -y git
+git clone https://github.com/cascabel-dev/malana
+cd malana
+sh malana.sh
+```
+\<WORK IN PROGRESS>
+
 ## Roadmap
 * Add firewall options  
 * Add further system hardening and configuration options  
