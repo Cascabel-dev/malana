@@ -43,7 +43,10 @@ case $MAINMENU in
 		REPOS=$?
 		if [ $REPOS -eq 0 ]; then
 			sudo zypper rr * && sudo zypper rm /etc/zypp/repos.d/*
-			sudo zypper ar -f http://download.opensuse.org/tumbleweed/repo/oss/ oss && sudo zypper ar -f http://download.opensuse.org/tumbleweed/repo/non-oss/ non-oss && sudo zypper ar -f http://download.opensuse.org/update/tumbleweed/ update && sudo zypper ar -f http://download.opensuse.org/repositories/M17N:/fonts/openSUSE_Tumbleweed fonts
+			sudo zypper ar -f http://download.opensuse.org/tumbleweed/repo/oss/ oss
+   			sudo zypper ar -f http://download.opensuse.org/tumbleweed/repo/non-oss/ non-oss
+      			sudo zypper ar -f http://download.opensuse.org/update/tumbleweed/ update
+      			sudo zypper ar -f http://download.opensuse.org/repositories/M17N:/fonts/openSUSE_Tumbleweed fonts
 		else
 		  break
 		fi
@@ -55,7 +58,6 @@ case $MAINMENU in
 		FLATPAK=$?
 		if [ $FLATPAK -eq 0 ]; then
 			sudo zypper in -y flatpak
-			sleep 1
 			flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 			sudo flatpak update -y
 			flatpak update -y
@@ -164,7 +166,6 @@ case $MAINMENU in
 				sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 				sudo zypper addrepo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 				echo "brave-browser" >> /tmp/packagelist
-
 			;;&
 			*"Chromium"*)
 				echo "chromium" >> /tmp/packagelist
@@ -262,7 +263,6 @@ case $MAINMENU in
 			;;&
 			*) ;;
 		esac
-		sleep 1
 		sudo zypper refresh
 		sudo zypper --no-gpg-checks in -y $(cat /tmp/packagelist)
 		sudo rm /tmp/packagelist
@@ -285,7 +285,7 @@ case $MAINMENU in
 			sudo zypper ar -cfp 90 https://ftp.fau.de/packman/suse/openSUSE_Tumbleweed/Essentials packman-essentials
 			sudo zypper refresh
 			sudo zypper dup -y --from packman-essentials --allow-vendor-change
-			sudo zypper in -y libdvdcss2 ffmpeg lame gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-good-extra gstreamer-plugins-bad gstreamer-plugins-bad-orig-addon gstreamer-plugins-ugly gstreamer-plugins-ugly-orig-addon gstreamer-plugins-libav dvdauthor07
+			sudo zypper in -y ffmpeg lame gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-good-extra gstreamer-plugins-bad gstreamer-plugins-bad-orig-addon gstreamer-plugins-ugly gstreamer-plugins-ugly-orig-addon gstreamer-plugins-libav dvdauthor07
 		else
 		  break
 		fi
