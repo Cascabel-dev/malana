@@ -22,7 +22,7 @@ case $MAINMENU in
 			sudo rm /var/lib/zypp/AnonymousUniqueId
 			sudo zypper in -y cron 
 			sudo systemctl enable cron.service
-			sudo echo "@reboot rm /var/lib/zypp/AnonymousUniqueId" >> /etc/crontab
+			echo '@reboot rm /var/lib/zypp/AnonymousUniqueId' | sudo tee -a /etc/crontab
 		else
 		    break
 		fi
